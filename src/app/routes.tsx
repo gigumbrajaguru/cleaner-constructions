@@ -4,14 +4,19 @@ import { Home } from "./components/Home";
 import { Services } from "./components/Services";
 import { Contact } from "./components/Contact";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: Layout,
-    children: [
-      { index: true, Component: Home },
-      { path: "services", Component: Services },
-      { path: "contact", Component: Contact },
-    ],
-  },
-]);
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/";
+
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      Component: Layout,
+      children: [
+        { index: true, Component: Home },
+        { path: "services", Component: Services },
+        { path: "contact", Component: Contact },
+      ],
+    },
+  ],
+  { basename },
+);
