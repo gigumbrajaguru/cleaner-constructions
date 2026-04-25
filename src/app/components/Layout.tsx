@@ -82,16 +82,6 @@ export function Layout() {
               >
                 Reviews
               </Link>
-              <Link
-                to="/admin/reviews"
-                className={`transition-colors ${
-                  isActive("/admin/reviews")
-                    ? "text-blue-600"
-                    : "text-gray-600 hover:text-blue-600"
-                }`}
-              >
-                Admin
-              </Link>
             </div>
           </div>
         </nav>
@@ -133,9 +123,6 @@ export function Layout() {
                 >
                   Client Reviews
                 </Link>
-                <Link to="/admin/reviews" className="text-gray-400 hover:text-white transition-colors">
-                  Reviews Admin
-                </Link>
               </div>
             </div>
 
@@ -149,8 +136,31 @@ export function Layout() {
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-            <p>&copy; 2026 SparkleClean & Build. All rights reserved.</p>
+          <div className="mt-8 border-t border-gray-800 pt-6 text-sm text-gray-400">
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
+              <p>
+                &copy; 2026 GBRSystems. All rights reserved. Created by{" "}
+                <a
+                  href="https://gigumbrajaguru.me"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="transition-colors hover:text-white"
+                >
+                  GBRSystems
+                </a>
+                .
+              </p>
+              <Link
+                to="/admin/reviews"
+                className={`transition-colors ${
+                  isActive("/admin/reviews")
+                    ? "text-white"
+                    : "text-gray-500 hover:text-white"
+                }`}
+              >
+                Admin Login
+              </Link>
+            </div>
           </div>
         </div>
       </footer>
