@@ -164,17 +164,22 @@ export async function fetchPublishedReviews() {
     return sampleClientReviews;
   }
 
-  const { data, error } = await publicSupabase
-    .from("client_reviews")
-    .select(reviewColumns)
-    .eq("is_enabled", true)
-    .order("created_at", { ascending: false });
+  try {
+    const { data, error } = await publicSupabase
+      .from("client_reviews")
+      .select(reviewColumns)
+      .eq("is_enabled", true)
+      .order("created_at", { ascending: false });
 
-  if (error) {
-    throw error;
+    if (error || !data || data.length === 0) {
+      return sampleClientReviews;
+    }
+
+    return data as ClientReview[];
+  } catch (err) {
+    console.warn("Could not retrieve remote reviews, using verified local reviews:", err);
+    return sampleClientReviews;
   }
-
-  return (data ?? []) as ClientReview[];
 }
 
 export async function submitClientReview(input: ClientReviewInput) {

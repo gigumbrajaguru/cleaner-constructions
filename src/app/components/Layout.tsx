@@ -53,74 +53,74 @@ export function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
       {/* ── TOP ANNOUNCEMENT BAR ── */}
-      <div className="bg-blue-950 text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-blue-900/50">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-600/30 text-blue-200 font-medium text-xs">
+      <div className="bg-blue-950 text-slate-200 text-xs py-2.5 border-b border-blue-900/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center gap-4">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-600/30 text-blue-200 font-semibold text-[11px] whitespace-nowrap shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-              Serving Hertfordshire &amp; Surrounding Counties
+              Hertfordshire &amp; Surrounds
             </span>
-            <span className="hidden md:inline text-slate-500">&bull;</span>
-            <span className="hidden md:inline text-slate-300">
+            <span className="hidden md:inline text-slate-600">&bull;</span>
+            <span className="hidden md:inline text-slate-300 font-medium whitespace-nowrap truncate">
               Free Written Estimates &bull; 100% Fully Insured
             </span>
           </div>
-          <div className="flex items-center gap-4 text-xs">
+          <div className="flex items-center gap-4 text-xs shrink-0">
             <a
               href="tel:08002461980"
-              className="flex items-center gap-1.5 text-blue-300 hover:text-white font-semibold transition-colors"
+              className="flex items-center gap-1.5 text-blue-300 hover:text-white font-semibold transition-colors whitespace-nowrap"
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
               <span>0800 246 1980</span>
             </a>
-            <span className="text-slate-600">|</span>
+            <span className="hidden sm:inline text-slate-700">|</span>
             <a
               href="mailto:hello@apexbuildingsolutions.co.uk"
-              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors whitespace-nowrap"
             >
-              <Mail className="w-3.5 h-3.5 text-blue-400" />
-              <span className="hidden sm:inline">hello@apexbuildingsolutions.co.uk</span>
+              <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span>hello@apexbuildingsolutions.co.uk</span>
             </a>
           </div>
         </div>
       </div>
 
       {/* ── CLEAN WHITE & BLUE STICKY NAVBAR ── */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-all">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
           <Link
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 shrink-0 group py-1"
           >
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-              <HardHat className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm group-hover:bg-blue-700 transition-colors shrink-0">
+              <HardHat className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bebas text-2xl sm:text-3xl tracking-wider text-slate-900 flex items-center gap-1.5 leading-none">
+              <span className="font-bebas text-2xl sm:text-3xl tracking-wider text-slate-900 leading-none whitespace-nowrap">
                 APEX <span className="text-blue-600">BUILDING</span>
               </span>
-              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">
+              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold whitespace-nowrap leading-tight mt-0.5">
                 Solutions Ltd &bull; Quality Construction
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-5 2xl:gap-7 shrink-0">
             <Link
               to="/"
-              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
-                isActive("/") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
+              className={`text-xs uppercase font-bold tracking-wider whitespace-nowrap transition-colors py-1 ${
+                isActive("/") ? "text-blue-600 border-b-2 border-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Home
             </Link>
             <Link
               to="/services"
-              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
-                isActive("/services") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
+              className={`text-xs uppercase font-bold tracking-wider whitespace-nowrap transition-colors py-1 ${
+                isActive("/services") ? "text-blue-600 border-b-2 border-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Services
@@ -128,35 +128,35 @@ export function Layout() {
             <Link
               to="/"
               onClick={() => handleNavClick("about")}
-              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
+              className="text-xs uppercase font-bold tracking-wider whitespace-nowrap text-slate-700 hover:text-blue-600 transition-colors py-1"
             >
-              About Us
+              About
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("gallery")}
-              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
+              className="text-xs uppercase font-bold tracking-wider whitespace-nowrap text-slate-700 hover:text-blue-600 transition-colors py-1"
             >
-              Our Work
+              Projects
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("why-us")}
-              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
+              className="text-xs uppercase font-bold tracking-wider whitespace-nowrap text-slate-700 hover:text-blue-600 transition-colors py-1"
             >
-              Why Choose Us
+              Why Us
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("reviews")}
-              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
+              className="text-xs uppercase font-bold tracking-wider whitespace-nowrap text-slate-700 hover:text-blue-600 transition-colors py-1"
             >
               Reviews
             </Link>
             <Link
               to="/contact"
-              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
-                isActive("/contact") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
+              className={`text-xs uppercase font-bold tracking-wider whitespace-nowrap transition-colors py-1 ${
+                isActive("/contact") ? "text-blue-600 border-b-2 border-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Contact
@@ -164,21 +164,21 @@ export function Layout() {
           </div>
 
           {/* Header Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5 shrink-0">
             <a
               href="tel:08002461980"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-200 text-slate-800 text-xs font-bold hover:border-blue-600 hover:text-blue-600 transition-colors"
+              className="hidden xl:inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-slate-200 text-slate-800 text-xs font-bold hover:border-blue-600 hover:text-blue-600 hover:bg-slate-50 transition-colors whitespace-nowrap shrink-0"
             >
-              <Phone className="w-3.5 h-3.5 text-blue-600" />
-              <span>0800 246 1980</span>
+              <Phone className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+              <span className="whitespace-nowrap">0800 246 1980</span>
             </a>
             <Link
               to="/contact"
               onClick={() => handleNavClick("location")}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all whitespace-nowrap shrink-0 transform hover:-translate-y-0.5"
             >
-              <span>Get Free Quote</span>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="whitespace-nowrap">Get Free Quote</span>
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
             </Link>
           </div>
 
@@ -186,7 +186,7 @@ export function Layout() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-blue-600 focus:outline-none"
+            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-blue-600 focus:outline-none shrink-0"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -223,14 +223,14 @@ export function Layout() {
                 onClick={() => handleNavClick("about")}
                 className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
-                About Apex
+                About Us
               </Link>
               <Link
                 to="/"
                 onClick={() => handleNavClick("gallery")}
                 className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
-                Our Work / Gallery
+                Projects &amp; Gallery
               </Link>
               <Link
                 to="/"

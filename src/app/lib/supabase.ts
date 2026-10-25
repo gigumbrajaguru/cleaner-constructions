@@ -20,12 +20,4 @@ export const supabase: SupabaseClient | null = isSupabaseConfigured
     })
   : null;
 
-export const publicSupabase: SupabaseClient | null = isSupabaseConfigured
-  ? createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        autoRefreshToken: false,
-        detectSessionInUrl: false,
-        persistSession: false,
-      },
-    })
-  : null;
+export const publicSupabase: SupabaseClient | null = supabase;
