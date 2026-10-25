@@ -22,7 +22,7 @@ function ReviewStars({ rating }: { rating: number }) {
         <Star
           key={star}
           className={`h-4 w-4 ${
-            star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-300"
+            star <= rating ? "fill-amber-400 text-amber-400" : "text-slate-300"
           }`}
         />
       ))}
@@ -60,7 +60,7 @@ export function ReviewAdmin() {
 
       if (!hasAccess) {
         setReviews([]);
-        setAdminError("This account is not allowed to moderate reviews.");
+        setAdminError("This account is not authorized to moderate reviews.");
         return;
       }
 
@@ -91,9 +91,7 @@ export function ReviewAdmin() {
       try {
         const currentSession = await getCurrentAdminSession();
 
-        if (!isMounted) {
-          return;
-        }
+        if (!isMounted) return;
 
         setSession(currentSession);
 
@@ -194,10 +192,10 @@ export function ReviewAdmin() {
   if (!isSupabaseConfigured) {
     return (
       <div>
-        <section className="bg-[#1C2B3A] text-white py-16 border-b-2 border-[#C8922A]">
+        <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-16 border-b-4 border-blue-600">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <span className="text-xs uppercase font-bold tracking-widest text-[#C8922A]">
-              DS2 Building Solutions
+            <span className="text-xs uppercase font-bold tracking-widest text-blue-400">
+              Apex Building Solutions
             </span>
             <h1 className="mb-4 text-4xl sm:text-5xl font-bebas text-white">Review Moderation Admin</h1>
             <p className="text-base text-slate-300">
@@ -211,16 +209,16 @@ export function ReviewAdmin() {
 
   return (
     <div>
-      <section className="bg-[#1C2B3A] text-white py-16 border-b-2 border-[#C8922A]">
+      <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-16 border-b-4 border-blue-600">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-[#C8922A]">
-                DS2 Building Solutions
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-400">
+                Apex Building Solutions
               </p>
               <h1 className="mb-2 text-4xl sm:text-5xl font-bebas text-white">Client Review Moderation</h1>
               <p className="text-base text-slate-300">
-                Approve, feature or hide client reviews across Hertfordshire and regional building projects.
+                Approve, feature or hide verified client reviews across regional building projects.
               </p>
             </div>
 
@@ -228,7 +226,7 @@ export function ReviewAdmin() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="inline-flex items-center justify-center gap-2 rounded border border-white/20 bg-white/10 px-4 py-2.5 text-xs uppercase font-bold text-white transition-colors hover:bg-white/20"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2.5 text-xs uppercase font-bold text-white transition-colors hover:bg-white/20"
               >
                 <LogOut className="h-4 w-4" />
                 Sign Out
@@ -238,25 +236,25 @@ export function ReviewAdmin() {
         </div>
       </section>
 
-      <section className="bg-[#F7F4EF] py-16 min-h-[60vh]">
+      <section className="bg-slate-50 py-16 min-h-[60vh]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           {isCheckingAuth ? (
-            <div className="rounded-xl border border-[#E8E2D9] bg-white p-8 text-slate-600 shadow-sm">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-slate-600 shadow-sm">
               Checking admin session...
             </div>
           ) : !session ? (
             <form
               onSubmit={handleSignIn}
-              className="max-w-xl rounded-xl border border-[#E8E2D9] bg-white p-8 shadow-md"
+              className="max-w-xl rounded-2xl border border-slate-200 bg-white p-8 shadow-md"
             >
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#1C2B3A] text-[#C8922A]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
                   <ShieldCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bebas text-[#1C2B3A]">Admin Sign In</h2>
+                  <h2 className="text-2xl font-bebas text-slate-900">Admin Sign In</h2>
                   <p className="text-xs text-slate-500">
-                    Sign in to approve or hide DS2 customer reviews.
+                    Sign in to approve or hide client reviews.
                   </p>
                 </div>
               </div>
@@ -277,7 +275,7 @@ export function ReviewAdmin() {
                       }))
                     }
                     required
-                    className="w-full rounded border-2 border-gray-200 px-4 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                   />
                 </div>
 
@@ -296,12 +294,12 @@ export function ReviewAdmin() {
                       }))
                     }
                     required
-                    className="w-full rounded border-2 border-gray-200 px-4 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                   />
                 </div>
 
                 {authError ? (
-                  <div className="rounded border border-red-200 bg-red-50 p-3 text-xs text-red-700">
+                  <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-700">
                     {authError}
                   </div>
                 ) : null}
@@ -309,7 +307,7 @@ export function ReviewAdmin() {
                 <button
                   type="submit"
                   disabled={isSigningIn}
-                  className="inline-flex w-full items-center justify-center rounded bg-[#C8922A] hover:bg-[#d8a033] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#1C2B3A] transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
+                  className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
                 >
                   {isSigningIn ? "Signing In..." : "Sign In to Dashboard"}
                 </button>
@@ -317,9 +315,9 @@ export function ReviewAdmin() {
             </form>
           ) : (
             <div className="space-y-6">
-              <div className="flex flex-col gap-4 rounded-xl border border-[#E8E2D9] bg-white p-6 sm:flex-row sm:items-center sm:justify-between shadow-sm">
+              <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-center sm:justify-between shadow-sm">
                 <div>
-                  <h2 className="text-2xl font-bebas text-[#1C2B3A]">Client Reviews Moderation</h2>
+                  <h2 className="text-2xl font-bebas text-slate-900">Client Reviews Moderation</h2>
                   <p className="text-xs text-slate-500">
                     Signed in as {session.user.email}
                   </p>
@@ -329,7 +327,7 @@ export function ReviewAdmin() {
                   type="button"
                   onClick={loadAdminReviews}
                   disabled={isLoadingReviews}
-                  className="inline-flex items-center justify-center gap-2 rounded border border-gray-300 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <RefreshCcw className="h-4 w-4" />
                   Refresh
@@ -337,13 +335,13 @@ export function ReviewAdmin() {
               </div>
 
               {adminError ? (
-                <div className="rounded border border-red-200 bg-red-50 p-4 text-xs text-red-700">
+                <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-xs text-red-700">
                   {adminError}
                 </div>
               ) : null}
 
               {isLoadingReviews ? (
-                <div className="rounded-xl border border-[#E8E2D9] bg-white p-8 text-slate-600 shadow-sm">
+                <div className="rounded-2xl border border-slate-200 bg-white p-8 text-slate-600 shadow-sm">
                   Loading reviews...
                 </div>
               ) : isAdmin && reviews.length > 0 ? (
@@ -351,12 +349,12 @@ export function ReviewAdmin() {
                   {reviews.map((review) => (
                     <div
                       key={review.id}
-                      className="rounded-xl border border-[#E8E2D9] bg-white p-6 shadow-sm"
+                      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
                     >
                       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div>
                           <div className="mb-2 flex flex-wrap items-center gap-3">
-                            <h3 className="text-xl font-bold text-[#1C2B3A]">
+                            <h3 className="text-xl font-bold text-slate-900">
                               {review.client_name}
                             </h3>
                             <Badge
@@ -386,7 +384,7 @@ export function ReviewAdmin() {
                             onCheckedChange={(checked) =>
                               handleVisibilityChange(review.id, checked)
                             }
-                            className="data-[state=checked]:bg-[#C8922A]"
+                            className="data-[state=checked]:bg-blue-600"
                             aria-label={`Toggle ${review.client_name} review visibility`}
                           />
                         </label>
@@ -399,12 +397,12 @@ export function ReviewAdmin() {
                         </span>
                       </div>
 
-                      <p className="leading-relaxed text-sm text-slate-700 bg-slate-50 p-4 rounded border border-slate-100">{review.review}</p>
+                      <p className="leading-relaxed text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">{review.review}</p>
                     </div>
                   ))}
                 </div>
               ) : isAdmin ? (
-                <div className="rounded-xl border border-dashed border-[#E8E2D9] bg-white p-8 text-center text-slate-500">
+                <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center text-slate-500">
                   No client reviews submitted yet.
                 </div>
               ) : null}

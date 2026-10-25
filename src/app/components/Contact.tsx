@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   Send,
-  MessageSquare,
   AlertCircle,
 } from "lucide-react";
 
@@ -96,164 +95,164 @@ export function Contact() {
 
   return (
     <div>
-      {/* ── HEADER BANNER ── */}
-      <section className="bg-[#1C2B3A] text-white py-16 border-b-2 border-[#C8922A]">
+      {/* ── HEADER BANNER: BLUE & WHITE ── */}
+      <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-16 border-b-4 border-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
-            Letchworth Garden City &amp; Surrounding Counties
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-400">
+            Regional Building &amp; Property Services
           </span>
           <h1 className="font-bebas text-4xl sm:text-6xl tracking-wide text-white mt-2 mb-4">
             Visit or Get in Touch
           </h1>
-          <div className="w-16 h-1 bg-[#C8922A] mx-auto mb-6"></div>
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-            Planning a home extension, structural renovation, loft conversion, or property maintenance
-            project? Get in touch for an itemised, no-obligation written quote.
+          <div className="w-16 h-1 bg-blue-500 mx-auto mb-6 rounded-full"></div>
+          <p className="text-slate-200 text-base sm:text-lg leading-relaxed">
+            Planning an extension, renovation, loft conversion, or property maintenance project?
+            Get in touch for an itemised, no-obligation written quote.
           </p>
         </div>
       </section>
 
       {/* ── MAIN CONTACT SECTION ── */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: Contact Info */}
-            <div className="space-y-8 bg-[#F7F4EF] p-8 sm:p-10 rounded-2xl border border-[#E8E2D9]">
+            <div className="space-y-8 bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-sm">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
                   Direct Contact
                 </span>
-                <h2 className="font-bebas text-3xl sm:text-4xl text-[#1C2B3A] mt-1 mb-3">
-                  DS2 Building Solutions Ltd
+                <h2 className="font-bebas text-3xl sm:text-4xl text-slate-900 mt-1 mb-3">
+                  Apex Building Solutions Ltd
                 </h2>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  We are based in Letchworth Garden City and provide comprehensive building,
-                  structural engineering support, and finishing services across Hertfordshire and
-                  beyond.
+                  We are based in Hertfordshire and provide comprehensive building, structural
+                  engineering support, and maintenance services across the county and surrounding
+                  regions.
                 </p>
               </div>
 
               <div className="space-y-6">
                 {/* Address */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#E8E2D9] shadow-sm flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-[#C8922A]" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1">
-                      Registered Address
+                      Regional Office
                     </h3>
-                    <p className="text-[#1C2B3A] font-semibold text-base leading-relaxed">
-                      40 Eldefield, Letchworth Garden City,
+                    <p className="text-slate-900 font-semibold text-base leading-relaxed">
+                      Unit 8, The Sovereign Centre,
                     </p>
-                    <p className="text-slate-600 text-sm">Hertfordshire, SG6 4BL, England</p>
+                    <p className="text-slate-600 text-sm">Letchworth, Hertfordshire, SG6 2NW</p>
                   </div>
                 </div>
 
                 {/* Phone */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#E8E2D9] shadow-sm flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-[#C8922A]" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1">
                       Direct Telephone
                     </h3>
                     <a
-                      href="tel:07728547674"
-                      className="text-[#1C2B3A] font-bold text-lg hover:text-[#C8922A] transition-colors"
+                      href="tel:08002461980"
+                      className="text-slate-900 font-bold text-lg hover:text-blue-600 transition-colors"
                     >
-                      +44 7728 547 674
+                      0800 246 1980 / +44 1462 419 820
                     </a>
                     <p className="text-xs text-slate-500 mt-0.5">
-                      Fast response &bull; Direct trade communication
+                      Prompt customer support &bull; Direct trade communication
                     </p>
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#E8E2D9] shadow-sm flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-[#C8922A]" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <Mail className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1">
                       Email Address
                     </h3>
                     <a
-                      href="mailto:ds2buildingsolution@gmail.com"
-                      className="text-[#1C2B3A] font-bold text-base hover:text-[#C8922A] transition-colors break-all"
+                      href="mailto:hello@apexbuildingsolutions.co.uk"
+                      className="text-slate-900 font-bold text-base hover:text-blue-600 transition-colors break-all"
                     >
-                      ds2buildingsolution@gmail.com
+                      hello@apexbuildingsolutions.co.uk
                     </a>
-                    <p className="text-xs text-slate-500 mt-0.5">Send plans &amp; tender documents</p>
+                    <p className="text-xs text-slate-500 mt-0.5">Send architectural drawings &amp; tenders</p>
                   </div>
                 </div>
 
                 {/* Hours */}
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#E8E2D9] shadow-sm flex items-center justify-center shrink-0">
-                    <Clock className="w-6 h-6 text-[#C8922A]" />
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <Clock className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1">
                       Working Hours
                     </h3>
-                    <p className="text-[#1C2B3A] text-sm font-semibold">
-                      Monday &ndash; Friday: 7:30am &ndash; 6:00pm
+                    <p className="text-slate-900 text-sm font-semibold">
+                      Monday &ndash; Friday: 8:00am &ndash; 5:30pm
                     </p>
-                    <p className="text-slate-600 text-sm">Saturday: 8:00am &ndash; 2:00pm</p>
+                    <p className="text-slate-600 text-sm">Saturday: 8:30am &ndash; 1:30pm</p>
                     <p className="text-xs text-slate-500 mt-0.5">
-                      Sunday: Emergency repairs &amp; pre-booked viewings
+                      Sunday: Emergency repairs &amp; pre-booked site visits
                     </p>
                   </div>
                 </div>
 
                 {/* Coverage */}
-                <div className="flex items-start gap-4 pt-4 border-t border-[#E8E2D9]">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#E8E2D9] shadow-sm flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-6 h-6 text-[#C8922A]" />
+                <div className="flex items-start gap-4 pt-4 border-t border-slate-100">
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
                     <h3 className="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1">
                       Service Coverage Area
                     </h3>
-                    <p className="text-[#1C2B3A] text-sm font-semibold">
-                      Hertfordshire &bull; Bedfordshire &bull; Cambridgeshire &bull; North London
+                    <p className="text-slate-900 text-sm font-semibold">
+                      Hertfordshire &bull; Bedfordshire &bull; Cambridgeshire &bull; Greater London
                     </p>
                     <p className="text-xs text-slate-500 mt-1">
-                      Letchworth, Stevenage, Hitchin, Baldock, Welwyn, Luton, St Albans, Royston
+                      Letchworth, Stevenage, Hitchin, Baldock, Welwyn, St Albans, Royston, Luton
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Quick Call Action Strip */}
+              {/* Quick Actions */}
               <div className="pt-2 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="tel:07728547674"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-[#1C2B3A] hover:bg-[#25394d] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                  href="tel:08002461980"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <Phone className="w-4 h-4 text-[#C8922A]" />
-                  <span>Call 07728 547 674</span>
+                  <Phone className="w-4 h-4" />
+                  <span>Call 0800 246 1980</span>
                 </a>
                 <a
-                  href="mailto:ds2buildingsolution@gmail.com"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-[#C8922A] hover:bg-[#d8a033] text-[#1C2B3A] font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
+                  href="mailto:hello@apexbuildingsolutions.co.uk"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl border-2 border-slate-300 hover:border-blue-600 text-slate-800 hover:text-blue-600 font-bold text-xs uppercase tracking-wider transition-colors"
                 >
-                  <Mail className="w-4 h-4" />
+                  <Mail className="w-4 h-4 text-blue-600" />
                   <span>Email Plans</span>
                 </a>
               </div>
             </div>
 
             {/* Right: Request a Free Quote Form */}
-            <div className="bg-white p-8 sm:p-10 rounded-2xl border-2 border-gray-200 shadow-xl">
+            <div className="bg-white p-8 sm:p-10 rounded-2xl border border-slate-200 shadow-xl">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
+                <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
                   Free Written Estimate
                 </span>
-                <h2 className="font-bebas text-3xl sm:text-4xl text-[#1C2B3A] mt-1 mb-2">
+                <h2 className="font-bebas text-3xl sm:text-4xl text-slate-900 mt-1 mb-2">
                   Request a Free Quote
                 </h2>
                 <p className="text-slate-600 text-sm mb-8 leading-relaxed">
@@ -263,11 +262,11 @@ export function Contact() {
               </div>
 
               {submitted ? (
-                <div className="bg-emerald-50 border-2 border-emerald-500 rounded-xl p-8 text-center animate-in zoom-in-95">
-                  <CheckCircle2 className="w-14 h-14 text-emerald-600 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-emerald-950 mb-2">Thank You!</h3>
-                  <p className="text-sm text-emerald-800 leading-relaxed max-w-md mx-auto">
-                    We've received your enquiry. A senior building specialist from DS2 Building
+                <div className="bg-blue-50 border-2 border-blue-500 rounded-2xl p-8 text-center animate-in zoom-in-95">
+                  <CheckCircle2 className="w-14 h-14 text-blue-600 mx-auto mb-4" />
+                  <h3 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+                    We've received your enquiry. A senior building specialist from Apex Building
                     Solutions will review your details and contact you within 24 hours.
                   </p>
                 </div>
@@ -288,7 +287,7 @@ export function Contact() {
                   </div>
 
                   {error && (
-                    <div className="bg-red-50 border-2 border-red-300 rounded-lg p-3.5 text-red-700 text-xs font-medium flex items-center gap-2">
+                    <div className="bg-red-50 border border-red-300 rounded-lg p-3.5 text-red-700 text-xs font-medium flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                       <span>{error}</span>
                     </div>
@@ -306,8 +305,8 @@ export function Contact() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="e.g. Sarah Jenkins"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm text-slate-900 focus:border-[#C8922A] focus:outline-none transition-colors"
+                        placeholder="e.g. Richard Walker"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-900 focus:border-blue-600 focus:outline-none transition-colors"
                       />
                     </div>
 
@@ -322,8 +321,8 @@ export function Contact() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="e.g. 07700 900000"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm text-slate-900 focus:border-[#C8922A] focus:outline-none transition-colors"
+                        placeholder="e.g. 07700 900888"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-900 focus:border-blue-600 focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -338,8 +337,8 @@ export function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="e.g. sarah@example.co.uk"
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm text-slate-900 focus:border-[#C8922A] focus:outline-none transition-colors"
+                      placeholder="e.g. richard@example.co.uk"
+                      className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-900 focus:border-blue-600 focus:outline-none transition-colors"
                     />
                   </div>
 
@@ -353,7 +352,7 @@ export function Contact() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm text-slate-900 focus:border-[#C8922A] focus:outline-none bg-white transition-colors"
+                      className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-900 focus:border-blue-600 focus:outline-none bg-white transition-colors"
                     >
                       <option>Extensions &amp; Additions</option>
                       <option>Full Renovations &amp; Refurbishments</option>
@@ -382,20 +381,20 @@ export function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="Tell us about the property, your timeline, drawings available, or specific questions..."
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm text-slate-900 focus:border-[#C8922A] focus:outline-none resize-none transition-colors"
+                      placeholder="Tell us about your property, requirements, expected timeline..."
+                      className="w-full px-4 py-3 border border-slate-300 rounded-xl text-sm text-slate-900 focus:border-blue-600 focus:outline-none resize-none transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-lg bg-[#C8922A] hover:bg-[#d8a033] text-[#1C2B3A] font-bold text-sm uppercase tracking-wider transition-colors shadow-lg flex items-center justify-center gap-2"
+                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm uppercase tracking-wider transition-colors shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     <span>Submit Quote Request</span>
                   </button>
                   <p className="text-[11px] text-center text-slate-400 mt-2">
-                    🔒 Your details are kept strictly private and used only to prepare your quote.
+                    🔒 Your details are kept strictly private and used only to calculate your estimate.
                   </p>
                 </form>
               )}
@@ -404,31 +403,31 @@ export function Contact() {
         </div>
       </section>
 
-      {/* ── INTERACTIVE GOOGLE MAP ── */}
-      <section className="bg-[#15222E] py-16 border-t border-white/10">
+      {/* ── GOOGLE MAP SECTION ── */}
+      <section className="bg-slate-900 py-16 border-t border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-400">
               Service Headquarters
             </span>
             <h2 className="font-bebas text-3xl sm:text-4xl text-white mt-1 mb-2">
-              Based in Letchworth Garden City
+              Based in Hertfordshire
             </h2>
             <p className="text-slate-300 text-sm">
-              Covering projects throughout Hertfordshire, Bedfordshire, Cambridgeshire &amp; North London.
+              Covering projects throughout Hertfordshire, Bedfordshire, Cambridgeshire &amp; Greater London.
             </p>
           </div>
 
-          <div className="w-full h-96 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+          <div className="w-full h-96 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.7!2d-0.24498!3d51.98306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s40+Eldefield%2C+Letchworth+Garden+City%2C+SG6+4BL!5e0!3m2!1sen!2suk!4v1699999999999"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.7!2d-0.24498!3d51.98306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sThe+Sovereign+Centre%2C+Letchworth%2C+SG6+2NW!5e0!3m2!1sen!2suk!4v1699999999999"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen={false}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="DS2 Building Solutions Headquarters in Letchworth Garden City"
+              title="Apex Building Solutions Regional Location"
             ></iframe>
           </div>
         </div>

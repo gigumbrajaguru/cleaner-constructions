@@ -40,12 +40,12 @@ function RatingStars({
               key={star}
               type="button"
               onClick={() => onChange(star)}
-              className="rounded p-1 text-amber-500 transition-colors hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded p-1 text-amber-400 transition-colors hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label={`Set ${star} star rating`}
             >
               <Star
                 className={`h-5 w-5 ${
-                  filled ? "fill-[#C8922A] text-[#C8922A]" : "text-gray-300"
+                  filled ? "fill-amber-400 text-amber-400" : "text-slate-300"
                 }`}
               />
             </button>
@@ -56,7 +56,7 @@ function RatingStars({
           <Star
             key={star}
             className={`h-5 w-5 ${
-              filled ? "fill-[#C8922A] text-[#C8922A]" : "text-gray-300"
+              filled ? "fill-amber-400 text-amber-400" : "text-slate-300"
             }`}
           />
         );
@@ -206,7 +206,7 @@ export function ClientReviews() {
       setForm(emptyForm);
       setSubmitState({
         status: "success",
-        message: "Thank you! Your review has been submitted for admin moderation.",
+        message: "Thank you! Your review has been submitted for approval.",
       });
     } catch (error) {
       setSubmitState({
@@ -220,30 +220,30 @@ export function ClientReviews() {
   };
 
   return (
-    <section id="reviews" className="bg-[#F7F4EF] py-20 border-t border-[#E8E2D9]">
+    <section id="reviews" className="bg-slate-50 py-20 border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-3xl">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
             Customer Reviews
           </span>
-          <h2 className="font-bebas text-4xl sm:text-5xl tracking-wide text-[#1C2B3A] mt-2 mb-3">
+          <h2 className="font-bebas text-4xl sm:text-5xl tracking-wide text-slate-900 mt-2 mb-3">
             What Our Clients Say
           </h2>
-          <div className="w-16 h-1 bg-[#C8922A] mb-4"></div>
+          <div className="w-16 h-1 bg-blue-600 mb-4 rounded-full"></div>
           <p className="text-slate-600 text-base sm:text-lg">
-            Don't just take our word for it. Here's what homeowners and businesses across
-            Hertfordshire, Bedfordshire, and Cambridgeshire think of DS2 Building Solutions.
+            Don't just take our word for it. Here's what homeowners, landlords, and commercial
+            clients across Hertfordshire think of Apex Building Solutions.
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(340px,0.8fr)] items-start">
           {/* Review Slider Box */}
-          <div className="rounded-xl border border-[#E8E2D9] bg-white p-7 sm:p-9 shadow-md flex flex-col justify-between">
+          <div className="rounded-2xl border border-slate-200 bg-white p-7 sm:p-9 shadow-sm flex flex-col justify-between">
             <div>
-              <div className="mb-6 flex items-center justify-between gap-4 pb-4 border-b border-gray-100">
+              <div className="mb-6 flex items-center justify-between gap-4 pb-4 border-b border-slate-100">
                 <div className="flex items-center gap-2">
-                  <Quote className="w-5 h-5 text-[#C8922A]" />
-                  <span className="font-bebas text-xl text-[#1C2B3A] tracking-wider uppercase">
+                  <Quote className="w-5 h-5 text-blue-600" />
+                  <span className="font-bebas text-xl text-slate-900 tracking-wider uppercase">
                     Verified Customer Feedback
                   </span>
                 </div>
@@ -253,7 +253,7 @@ export function ClientReviews() {
                     type="button"
                     onClick={showPreviousReview}
                     disabled={!hasMultipleReviews}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
                     aria-label="Previous client review"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -262,7 +262,7 @@ export function ClientReviews() {
                     type="button"
                     onClick={showNextReview}
                     disabled={!hasMultipleReviews}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 transition-colors hover:bg-slate-50 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
                     aria-label="Next client review"
                   >
                     <ChevronRight className="h-4 w-4" />
@@ -271,14 +271,14 @@ export function ClientReviews() {
               </div>
 
               {isLoading ? (
-                <div className="min-h-[220px] rounded-lg border border-dashed border-gray-300 bg-slate-50 p-8 text-gray-500 text-center flex items-center justify-center">
+                <div className="min-h-[220px] rounded-xl border border-dashed border-slate-200 bg-slate-50 p-8 text-slate-500 text-center flex items-center justify-center">
                   Loading verified reviews...
                 </div>
               ) : activeReview ? (
                 <div className="min-h-[220px]">
                   <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                     <RatingStars rating={activeReview.rating} />
-                    <span className="rounded bg-[#1C2B3A] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#C8922A]">
+                    <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700 border border-blue-100">
                       {activeReview.service_type}
                     </span>
                   </div>
@@ -287,17 +287,17 @@ export function ClientReviews() {
                     "{activeReview.review}"
                   </blockquote>
 
-                  <div className="flex items-center gap-3.5 pt-4 border-t border-gray-100">
-                    <div className="w-11 h-11 rounded-full bg-[#1C2B3A] text-[#C8922A] font-bebas text-lg flex items-center justify-center font-bold tracking-wider shrink-0 shadow-sm">
+                  <div className="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+                    <div className="w-11 h-11 rounded-full bg-blue-600 text-white font-bebas text-lg flex items-center justify-center font-bold tracking-wider shrink-0 shadow-sm">
                       {getInitials(activeReview.client_name)}
                     </div>
                     <div>
-                      <h3 className="font-bold text-base text-[#1C2B3A]">
+                      <h3 className="font-bold text-base text-slate-900">
                         {activeReview.client_name}
                       </h3>
                       {activeReview.client_role ? (
                         <p className="text-xs text-slate-500 font-medium flex items-center gap-1">
-                          <MapPin className="w-3.5 h-3.5 text-[#C8922A]" />
+                          <MapPin className="w-3.5 h-3.5 text-blue-600" />
                           {activeReview.client_role}
                         </p>
                       ) : null}
@@ -305,14 +305,14 @@ export function ClientReviews() {
                   </div>
                 </div>
               ) : (
-                <div className="min-h-[220px] rounded-lg border border-dashed border-gray-300 bg-slate-50 p-6 text-gray-600">
+                <div className="min-h-[220px] rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-slate-600">
                   {reviewError || "No client reviews are published yet."}
                 </div>
               )}
             </div>
 
             {reviews.length > 0 ? (
-              <div className="mt-8 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-gray-100">
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-slate-100">
                 <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
                   Review {activeIndex + 1} of {reviews.length}
                 </span>
@@ -324,8 +324,8 @@ export function ClientReviews() {
                       onClick={() => setActiveIndex(index)}
                       className={`h-2 rounded-full transition-all ${
                         index === activeIndex
-                          ? "w-7 bg-[#C8922A]"
-                          : "w-2 bg-gray-300 hover:bg-gray-400"
+                          ? "w-7 bg-blue-600"
+                          : "w-2 bg-slate-200 hover:bg-slate-300"
                       }`}
                       aria-label={`Show review ${index + 1}`}
                       aria-current={index === activeIndex}
@@ -339,13 +339,13 @@ export function ClientReviews() {
           {/* Submit Review Card */}
           <div
             id="submit-review"
-            className="scroll-mt-32 rounded-xl border border-[#E8E2D9] bg-white p-7 sm:p-9 shadow-md"
+            className="scroll-mt-32 rounded-2xl border border-slate-200 bg-white p-7 sm:p-9 shadow-sm"
           >
             <div className="mb-6">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C8922A]">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
                 Share Your Experience
               </span>
-              <h3 className="font-bebas text-3xl text-[#1C2B3A] mt-1 mb-1">
+              <h3 className="font-bebas text-3xl text-slate-900 mt-1 mb-1">
                 Leave a Client Review
               </h3>
               <p className="text-slate-500 text-xs">
@@ -365,8 +365,8 @@ export function ClientReviews() {
                   onChange={(event) => updateForm("client_name", event.target.value)}
                   minLength={2}
                   required
-                  placeholder="e.g. David M."
-                  className="w-full rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                  placeholder="e.g. Rachel Adams"
+                  className="w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -380,7 +380,7 @@ export function ClientReviews() {
                   value={form.client_role}
                   onChange={(event) => updateForm("client_role", event.target.value)}
                   placeholder="e.g. Letchworth Garden City"
-                  className="w-full rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                  className="w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -393,7 +393,7 @@ export function ClientReviews() {
                   value={form.service_type}
                   onChange={(event) => updateForm("service_type", event.target.value)}
                   required
-                  className="w-full rounded border-2 border-gray-200 bg-white px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                  className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                 >
                   {reviewServiceTypes.map((serviceType) => (
                     <option key={serviceType} value={serviceType}>
@@ -425,13 +425,13 @@ export function ClientReviews() {
                   minLength={10}
                   required
                   placeholder="Tell others about the workmanship, punctuality, and final quality..."
-                  className="w-full resize-none rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
+                  className="w-full resize-none rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                 />
               </div>
 
               {submitState.message ? (
                 <div
-                  className={`rounded border p-3 text-xs ${
+                  className={`rounded-lg border p-3 text-xs ${
                     submitState.status === "success"
                       ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                       : "border-red-200 bg-red-50 text-red-700"
@@ -442,7 +442,7 @@ export function ClientReviews() {
               ) : null}
 
               {!isSupabaseConfigured ? (
-                <div className="rounded border border-amber-200 bg-amber-50 p-2.5 text-xs text-amber-800">
+                <div className="rounded-lg border border-blue-200 bg-blue-50 p-2.5 text-xs text-blue-800">
                   Demo mode: Reviews are stored securely when Supabase is connected.
                 </div>
               ) : null}
@@ -450,7 +450,7 @@ export function ClientReviews() {
               <button
                 type="submit"
                 disabled={submitState.status === "submitting" || !isSupabaseConfigured}
-                className="inline-flex w-full items-center justify-center gap-2 rounded bg-[#C8922A] hover:bg-[#d8a033] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#1C2B3A] transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
               >
                 <Send className="h-4 w-4" />
                 {submitState.status === "submitting"

@@ -10,7 +10,7 @@ import {
   X,
   ShieldCheck,
   ChevronRight,
-  Sparkles,
+  CheckCircle,
 } from "lucide-react";
 
 export function Layout() {
@@ -51,42 +51,42 @@ export function Layout() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F4EF] text-[#1C2B3A] selection:bg-[#C8922A] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-600 selection:text-white">
       {/* ── TOP ANNOUNCEMENT BAR ── */}
-      <div className="bg-[#15222E] text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-white/10">
+      <div className="bg-blue-950 text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-blue-900/50">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-medium text-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-              Serving Letchworth Garden City & Hertfordshire
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-600/30 text-blue-200 font-medium text-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+              Serving Hertfordshire &amp; Surrounding Counties
             </span>
-            <span className="hidden md:inline text-slate-400">·</span>
+            <span className="hidden md:inline text-slate-500">&bull;</span>
             <span className="hidden md:inline text-slate-300">
-              Free Detailed Estimates & Written Quotes
+              Free Written Estimates &bull; 100% Fully Insured
             </span>
           </div>
           <div className="flex items-center gap-4 text-xs">
             <a
-              href="tel:07728547674"
-              className="flex items-center gap-1.5 hover:text-amber-400 font-semibold transition-colors"
+              href="tel:08002461980"
+              className="flex items-center gap-1.5 text-blue-300 hover:text-white font-semibold transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>+44 7728 547 674</span>
+              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <span>0800 246 1980</span>
             </a>
             <span className="text-slate-600">|</span>
             <a
-              href="mailto:ds2buildingsolution@gmail.com"
-              className="flex items-center gap-1.5 hover:text-amber-400 transition-colors"
+              href="mailto:hello@apexbuildingsolutions.co.uk"
+              className="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
             >
-              <Mail className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden sm:inline">ds2buildingsolution@gmail.com</span>
+              <Mail className="w-3.5 h-3.5 text-blue-400" />
+              <span className="hidden sm:inline">hello@apexbuildingsolutions.co.uk</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* ── STICKY MAIN NAVBAR ── */}
-      <header className="sticky top-0 z-50 bg-[#1C2B3A]/95 backdrop-blur-md border-b-2 border-[#C8922A] shadow-md transition-all">
+      {/* ── CLEAN WHITE & BLUE STICKY NAVBAR ── */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link
@@ -94,33 +94,33 @@ export function Layout() {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-3 group"
           >
-            <div className="w-10 h-10 rounded bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center text-slate-950 shadow-md group-hover:scale-105 transition-transform">
-              <HardHat className="w-6 h-6 text-[#1C2B3A]" />
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+              <HardHat className="w-6 h-6 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="font-bebas text-2xl sm:text-3xl tracking-wider text-white flex items-center gap-1.5 leading-none">
-                DS2 <span className="text-[#C8922A]">BUILDING</span>
+              <span className="font-bebas text-2xl sm:text-3xl tracking-wider text-slate-900 flex items-center gap-1.5 leading-none">
+                APEX <span className="text-blue-600">BUILDING</span>
               </span>
-              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-300 font-medium">
+              <span className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 font-semibold">
                 Solutions Ltd &bull; Quality Construction
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-7">
             <Link
               to="/"
-              className={`text-xs uppercase font-semibold tracking-wider transition-colors ${
-                isActive("/") ? "text-[#C8922A]" : "text-white/85 hover:text-[#C8922A]"
+              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
+                isActive("/") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Home
             </Link>
             <Link
               to="/services"
-              className={`text-xs uppercase font-semibold tracking-wider transition-colors ${
-                isActive("/services") ? "text-[#C8922A]" : "text-white/85 hover:text-[#C8922A]"
+              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
+                isActive("/services") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Services
@@ -128,35 +128,35 @@ export function Layout() {
             <Link
               to="/"
               onClick={() => handleNavClick("about")}
-              className="text-xs uppercase font-semibold tracking-wider text-white/85 hover:text-[#C8922A] transition-colors"
+              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
             >
               About Us
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("gallery")}
-              className="text-xs uppercase font-semibold tracking-wider text-white/85 hover:text-[#C8922A] transition-colors"
+              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
             >
               Our Work
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("why-us")}
-              className="text-xs uppercase font-semibold tracking-wider text-white/85 hover:text-[#C8922A] transition-colors"
+              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
             >
               Why Choose Us
             </Link>
             <Link
               to="/"
               onClick={() => handleNavClick("reviews")}
-              className="text-xs uppercase font-semibold tracking-wider text-white/85 hover:text-[#C8922A] transition-colors"
+              className="text-xs uppercase font-bold tracking-wider text-slate-700 hover:text-blue-600 transition-colors"
             >
               Reviews
             </Link>
             <Link
               to="/contact"
-              className={`text-xs uppercase font-semibold tracking-wider transition-colors ${
-                isActive("/contact") ? "text-[#C8922A]" : "text-white/85 hover:text-[#C8922A]"
+              className={`text-xs uppercase font-bold tracking-wider transition-colors ${
+                isActive("/contact") ? "text-blue-600" : "text-slate-700 hover:text-blue-600"
               }`}
             >
               Contact
@@ -166,16 +166,16 @@ export function Layout() {
           {/* Header Action CTAs */}
           <div className="hidden sm:flex items-center gap-3">
             <a
-              href="tel:07728547674"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded border border-amber-500/40 text-amber-300 text-xs font-semibold hover:bg-amber-500/10 transition-colors"
+              href="tel:08002461980"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-200 text-slate-800 text-xs font-bold hover:border-blue-600 hover:text-blue-600 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-amber-400" />
-              <span>07728 547 674</span>
+              <Phone className="w-3.5 h-3.5 text-blue-600" />
+              <span>0800 246 1980</span>
             </a>
             <Link
               to="/contact"
               onClick={() => handleNavClick("location")}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-[#C8922A] hover:bg-[#d8a033] text-[#1C2B3A] font-bold text-xs uppercase tracking-wider shadow-sm transition-all transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all transform hover:-translate-y-0.5"
             >
               <span>Get Free Quote</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -186,7 +186,7 @@ export function Layout() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded text-white hover:text-amber-400 focus:outline-none"
+            className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-blue-600 focus:outline-none"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -195,7 +195,7 @@ export function Layout() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#15222E] border-b border-amber-500/30 px-6 py-6 space-y-4 animate-in slide-in-from-top-3">
+          <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 animate-in slide-in-from-top-3 shadow-lg">
             <div className="flex flex-col space-y-3">
               <Link
                 to="/"
@@ -203,8 +203,8 @@ export function Layout() {
                   setMobileMenuOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
-                className={`text-sm font-semibold tracking-wider uppercase py-1 ${
-                  isActive("/") ? "text-amber-400" : "text-white hover:text-amber-400"
+                className={`text-sm font-bold tracking-wider uppercase py-1 ${
+                  isActive("/") ? "text-blue-600" : "text-slate-800 hover:text-blue-600"
                 }`}
               >
                 Home
@@ -212,8 +212,8 @@ export function Layout() {
               <Link
                 to="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-sm font-semibold tracking-wider uppercase py-1 ${
-                  isActive("/services") ? "text-amber-400" : "text-white hover:text-amber-400"
+                className={`text-sm font-bold tracking-wider uppercase py-1 ${
+                  isActive("/services") ? "text-blue-600" : "text-slate-800 hover:text-blue-600"
                 }`}
               >
                 Services (12+ Solutions)
@@ -221,49 +221,49 @@ export function Layout() {
               <Link
                 to="/"
                 onClick={() => handleNavClick("about")}
-                className="text-sm font-semibold tracking-wider uppercase py-1 text-white hover:text-amber-400"
+                className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
-                About DS2
+                About Apex
               </Link>
               <Link
                 to="/"
                 onClick={() => handleNavClick("gallery")}
-                className="text-sm font-semibold tracking-wider uppercase py-1 text-white hover:text-amber-400"
+                className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
                 Our Work / Gallery
               </Link>
               <Link
                 to="/"
                 onClick={() => handleNavClick("why-us")}
-                className="text-sm font-semibold tracking-wider uppercase py-1 text-white hover:text-amber-400"
+                className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
-                The DS2 Difference
+                Why Choose Us
               </Link>
               <Link
                 to="/"
                 onClick={() => handleNavClick("reviews")}
-                className="text-sm font-semibold tracking-wider uppercase py-1 text-white hover:text-amber-400"
+                className="text-sm font-bold tracking-wider uppercase py-1 text-slate-800 hover:text-blue-600"
               >
                 Client Reviews
               </Link>
               <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`text-sm font-semibold tracking-wider uppercase py-1 ${
-                  isActive("/contact") ? "text-amber-400" : "text-white hover:text-amber-400"
+                className={`text-sm font-bold tracking-wider uppercase py-1 ${
+                  isActive("/contact") ? "text-blue-600" : "text-slate-800 hover:text-blue-600"
                 }`}
               >
                 Contact &amp; Map
               </Link>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex flex-col gap-2.5">
+            <div className="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
               <a
-                href="tel:07728547674"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded bg-white/10 text-amber-300 font-semibold text-sm hover:bg-white/15"
+                href="tel:08002461980"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-blue-50 text-blue-700 font-bold text-sm hover:bg-blue-100 transition-colors"
               >
-                <Phone className="w-4 h-4 text-amber-400" />
-                <span>Call +44 7728 547 674</span>
+                <Phone className="w-4 h-4 text-blue-600" />
+                <span>Call 0800 246 1980</span>
               </a>
               <Link
                 to="/contact"
@@ -271,7 +271,7 @@ export function Layout() {
                   setMobileMenuOpen(false);
                   handleNavClick("location");
                 }}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded bg-[#C8922A] text-[#1C2B3A] font-bold text-sm uppercase tracking-wider"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-lg bg-blue-600 text-white font-bold text-sm uppercase tracking-wider shadow-md"
               >
                 <span>Request Free Quote</span>
                 <ChevronRight className="w-4 h-4" />
@@ -286,101 +286,101 @@ export function Layout() {
         <Outlet />
       </main>
 
-      {/* ── FLOATING CALL / WHATSAPP PILL ── */}
+      {/* ── FLOATING QUICK CALL BUTTON ── */}
       <aside
         aria-label="Quick contact"
         className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2"
       >
         <a
-          href="tel:07728547674"
-          className="group inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#1C2B3A] text-white border-2 border-[#C8922A] shadow-xl hover:bg-[#15222E] hover:scale-105 transition-all"
-          aria-label="Direct call to +44 7728 547 674"
+          href="tel:08002461980"
+          className="group inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-xl hover:scale-105 transition-all border-2 border-white"
+          aria-label="Direct call to 0800 246 1980"
         >
-          <div className="w-8 h-8 rounded-full bg-[#C8922A] flex items-center justify-center text-[#1C2B3A]">
+          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-blue-600 font-bold">
             <Phone className="w-4 h-4" />
           </div>
           <div className="hidden sm:flex flex-col text-left">
-            <span className="text-[10px] text-amber-300 uppercase tracking-widest font-semibold">
+            <span className="text-[10px] text-blue-100 uppercase tracking-widest font-semibold">
               Instant Call
             </span>
-            <span className="text-sm font-bold">+44 7728 547 674</span>
+            <span className="text-sm font-bold">0800 246 1980</span>
           </div>
         </a>
       </aside>
 
-      {/* ── FOOTER ── */}
-      <footer className="bg-[#15222E] text-white pt-16 pb-12 border-t-4 border-[#C8922A]">
+      {/* ── FOOTER: DEEP BLUE & CRISP WHITE ── */}
+      <footer className="bg-slate-950 text-white pt-16 pb-12 border-t-4 border-blue-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-            {/* Brand column */}
+            {/* Brand Column */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded bg-[#C8922A] flex items-center justify-center text-[#1C2B3A] font-bold">
+                <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
                   <HardHat className="w-6 h-6" />
                 </div>
                 <span className="font-bebas text-2xl tracking-wider text-white">
-                  DS2 <span className="text-[#C8922A]">BUILDING</span>
+                  APEX <span className="text-blue-400">BUILDING</span>
                 </span>
               </div>
               <p className="text-sm text-slate-300 leading-relaxed">
-                DS2 Building Solutions Ltd delivers quality construction, home extensions, loft
-                conversions, full refurbishments, groundworks, and property services across
-                Hertfordshire, Bedfordshire, Cambridgeshire, and North London.
+                Apex Building Solutions Ltd delivers professional construction, house extensions,
+                full renovations, structural alterations, and property maintenance across Hertfordshire
+                and surrounding regions.
               </p>
               <div className="pt-2 flex flex-wrap gap-2 text-xs">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-slate-300">
-                  <ShieldCheck className="w-3.5 h-3.5 text-amber-400" /> Fully Insured
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/10 border border-white/15 text-slate-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-blue-400" /> Fully Insured
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/5 border border-white/10 text-slate-300">
-                  <Clock className="w-3.5 h-3.5 text-amber-400" /> 10+ Years Exp.
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white/10 border border-white/15 text-slate-200">
+                  <Clock className="w-3.5 h-3.5 text-blue-400" /> 10+ Years Experience
                 </span>
               </div>
             </div>
 
             {/* Services Column */}
             <div>
-              <h4 className="text-amber-400 font-bold uppercase text-xs tracking-widest mb-4">
+              <h4 className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">
                 Full-Spectrum Services
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Extensions &amp; Additions
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Full Renovations &amp; Refurbishments
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Loft Conversions
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Kitchen &amp; Bathroom Fitting
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Brickwork &amp; Masonry
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Roofing &amp; Guttering
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
                     Driveways &amp; Groundworks
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-amber-400 transition-colors">
-                    Post-Construction Detailing
+                  <Link to="/services" className="hover:text-blue-400 transition-colors">
+                    Post-Construction Handover Detailing
                   </Link>
                 </li>
               </ul>
@@ -388,37 +388,37 @@ export function Layout() {
 
             {/* Quick Links Column */}
             <div>
-              <h4 className="text-amber-400 font-bold uppercase text-xs tracking-widest mb-4">
+              <h4 className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">
                 Company &amp; Work
               </h4>
               <ul className="space-y-2 text-sm text-slate-300">
                 <li>
-                  <Link to="/" onClick={() => handleNavClick("about")} className="hover:text-amber-400 transition-colors">
-                    About DS2 Building Solutions
+                  <Link to="/" onClick={() => handleNavClick("about")} className="hover:text-blue-400 transition-colors">
+                    About Apex Building
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={() => handleNavClick("gallery")} className="hover:text-amber-400 transition-colors">
-                    Projects Gallery
+                  <Link to="/" onClick={() => handleNavClick("gallery")} className="hover:text-blue-400 transition-colors">
+                    Projects Showcase
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={() => handleNavClick("why-us")} className="hover:text-amber-400 transition-colors">
-                    The DS2 Difference
+                  <Link to="/" onClick={() => handleNavClick("why-us")} className="hover:text-blue-400 transition-colors">
+                    Why Choose Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={() => handleNavClick("reviews")} className="hover:text-amber-400 transition-colors">
+                  <Link to="/" onClick={() => handleNavClick("reviews")} className="hover:text-blue-400 transition-colors">
                     Client Testimonials
                   </Link>
                 </li>
                 <li>
-                  <Link to="/contact" className="hover:text-amber-400 transition-colors">
+                  <Link to="/contact" className="hover:text-blue-400 transition-colors">
                     Request a Free Quote
                   </Link>
                 </li>
                 <li>
-                  <Link to="/" onClick={() => handleNavClick("submit-review")} className="hover:text-amber-400 transition-colors">
+                  <Link to="/" onClick={() => handleNavClick("submit-review")} className="hover:text-blue-400 transition-colors">
                     Submit Client Review
                   </Link>
                 </li>
@@ -427,37 +427,37 @@ export function Layout() {
 
             {/* Contact Details Column */}
             <div>
-              <h4 className="text-amber-400 font-bold uppercase text-xs tracking-widest mb-4">
-                Contact Information
+              <h4 className="text-blue-400 font-bold uppercase text-xs tracking-widest mb-4">
+                Contact Details
               </h4>
               <div className="space-y-3 text-sm text-slate-300">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                   <span>
-                    40 Eldefield, Letchworth Garden City,<br />
-                    Hertfordshire, SG6 4BL, England
+                    Unit 8, The Sovereign Centre,<br />
+                    Letchworth, Hertfordshire, SG6 2NW
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-amber-400 shrink-0" />
-                  <a href="tel:07728547674" className="hover:text-amber-400 transition-colors">
-                    +44 7728 547 674
+                  <Phone className="w-5 h-5 text-blue-400 shrink-0" />
+                  <a href="tel:08002461980" className="hover:text-blue-400 transition-colors">
+                    0800 246 1980 / +44 1462 419 820
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-amber-400 shrink-0" />
+                  <Mail className="w-5 h-5 text-blue-400 shrink-0" />
                   <a
-                    href="mailto:ds2buildingsolution@gmail.com"
-                    className="hover:text-amber-400 transition-colors break-all"
+                    href="mailto:hello@apexbuildingsolutions.co.uk"
+                    className="hover:text-blue-400 transition-colors break-all"
                   >
-                    ds2buildingsolution@gmail.com
+                    hello@apexbuildingsolutions.co.uk
                   </a>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
                   <div>
-                    <p>Mon–Fri: 7:30am – 6:00pm</p>
-                    <p>Sat: 8:00am – 2:00pm</p>
+                    <p>Mon–Fri: 8:00am – 5:30pm</p>
+                    <p>Sat: 8:30am – 1:30pm</p>
                   </div>
                 </div>
               </div>
@@ -465,26 +465,19 @@ export function Layout() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
             <div className="flex flex-col sm:flex-row items-center gap-2">
-              <p>&copy; 2026 DS2 Building Solutions Ltd. All rights reserved.</p>
+              <p>&copy; 2026 Apex Building Solutions Ltd. All rights reserved.</p>
               <span className="hidden sm:inline">&bull;</span>
-              <p className="text-amber-400/90 font-medium">Registered in England &amp; Wales</p>
+              <p className="text-blue-400 font-medium">Registered in England &amp; Wales</p>
             </div>
             <div className="flex items-center gap-4">
-              <a
-                href="https://gigumbrajaguru.me"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                Engineering by GBRSystems
-              </a>
+              <span className="text-slate-500">Professional Building Services</span>
               <span>&bull;</span>
               <Link
                 to="/admin/reviews"
                 className={`transition-colors ${
-                  isActive("/admin/reviews") ? "text-amber-400 font-semibold" : "hover:text-white"
+                  isActive("/admin/reviews") ? "text-blue-400 font-semibold" : "hover:text-white"
                 }`}
               >
                 Review Admin
