@@ -22,7 +22,7 @@ function ReviewStars({ rating }: { rating: number }) {
         <Star
           key={star}
           className={`h-4 w-4 ${
-            star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-300"
+            star <= rating ? "fill-amber-400 text-amber-400" : "text-slate-300"
           }`}
         />
       ))}
@@ -60,7 +60,7 @@ export function ReviewAdmin() {
 
       if (!hasAccess) {
         setReviews([]);
-        setAdminError("This account is not allowed to moderate reviews.");
+        setAdminError("This account is not authorized to moderate reviews.");
         return;
       }
 
@@ -91,9 +91,7 @@ export function ReviewAdmin() {
       try {
         const currentSession = await getCurrentAdminSession();
 
-        if (!isMounted) {
-          return;
-        }
+        if (!isMounted) return;
 
         setSession(currentSession);
 
@@ -194,12 +192,14 @@ export function ReviewAdmin() {
   if (!isSupabaseConfigured) {
     return (
       <div>
-        <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+        <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-16 border-b-4 border-blue-600">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <h1 className="mb-4 text-4xl text-gray-900">Review Admin</h1>
-            <p className="text-xl text-gray-600">
-              Review moderation is unavailable until Supabase environment
-              variables are configured for this deployment.
+            <span className="text-xs uppercase font-bold tracking-widest text-blue-400">
+              Apex Building Solutions
+            </span>
+            <h1 className="mb-4 text-4xl sm:text-5xl font-bebas text-white">Review Moderation Admin</h1>
+            <p className="text-base text-slate-300">
+              Review moderation is currently in offline demo mode. Configure your Supabase project credentials in .env to enable live client review management.
             </p>
           </div>
         </section>
@@ -209,16 +209,16 @@ export function ReviewAdmin() {
 
   return (
     <div>
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-16 border-b-4 border-blue-600">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <p className="mb-3 text-sm font-medium uppercase tracking-wide text-blue-600">
-                Moderation
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-blue-400">
+                Apex Building Solutions
               </p>
-              <h1 className="mb-4 text-4xl text-gray-900">Review Admin</h1>
-              <p className="text-xl text-gray-600">
-                Enable approved client reviews for the homepage slideshow.
+              <h1 className="mb-2 text-4xl sm:text-5xl font-bebas text-white">Client Review Moderation</h1>
+              <p className="text-base text-slate-300">
+                Approve, feature or hide verified client reviews across regional building projects.
               </p>
             </div>
 
@@ -226,7 +226,7 @@ export function ReviewAdmin() {
               <button
                 type="button"
                 onClick={handleSignOut}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-gray-100"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-4 py-2.5 text-xs uppercase font-bold text-white transition-colors hover:bg-white/20"
               >
                 <LogOut className="h-4 w-4" />
                 Sign Out
@@ -236,24 +236,24 @@ export function ReviewAdmin() {
         </div>
       </section>
 
-      <section className="bg-white py-16">
+      <section className="bg-slate-50 py-16 min-h-[60vh]">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           {isCheckingAuth ? (
-            <div className="rounded-lg border border-gray-200 bg-white p-6 text-gray-600">
+            <div className="rounded-2xl border border-slate-200 bg-white p-8 text-slate-600 shadow-sm">
               Checking admin session...
             </div>
           ) : !session ? (
             <form
               onSubmit={handleSignIn}
-              className="max-w-xl rounded-lg border border-gray-200 bg-white p-6 shadow-sm"
+              className="max-w-xl rounded-2xl border border-slate-200 bg-white p-8 shadow-md"
             >
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-md bg-blue-100">
-                  <ShieldCheck className="h-6 w-6 text-blue-600" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                  <ShieldCheck className="h-6 w-6" />
                 </div>
                 <div>
-                  <h2 className="text-2xl text-gray-900">Admin Sign In</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-2xl font-bebas text-slate-900">Admin Sign In</h2>
+                  <p className="text-xs text-slate-500">
                     Sign in to approve or hide client reviews.
                   </p>
                 </div>
@@ -261,7 +261,7 @@ export function ReviewAdmin() {
 
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="admin-email" className="mb-2 block text-gray-700">
+                  <label htmlFor="admin-email" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
                     Email
                   </label>
                   <input
@@ -275,12 +275,12 @@ export function ReviewAdmin() {
                       }))
                     }
                     required
-                    className="w-full rounded-md border-2 border-gray-300 px-4 py-2 focus:border-blue-600 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="admin-password" className="mb-2 block text-gray-700">
+                  <label htmlFor="admin-password" className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
                     Password
                   </label>
                   <input
@@ -294,12 +294,12 @@ export function ReviewAdmin() {
                       }))
                     }
                     required
-                    className="w-full rounded-md border-2 border-gray-300 px-4 py-2 focus:border-blue-600 focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:border-blue-600 focus:outline-none"
                   />
                 </div>
 
                 {authError ? (
-                  <div className="rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                  <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-700">
                     {authError}
                   </div>
                 ) : null}
@@ -307,18 +307,18 @@ export function ReviewAdmin() {
                 <button
                   type="submit"
                   disabled={isSigningIn}
-                  className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-5 py-3 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 hover:bg-blue-700 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
                 >
-                  {isSigningIn ? "Signing In..." : "Sign In"}
+                  {isSigningIn ? "Signing In..." : "Sign In to Dashboard"}
                 </button>
               </div>
             </form>
           ) : (
             <div className="space-y-6">
-              <div className="flex flex-col gap-4 rounded-lg border border-gray-200 bg-slate-50 p-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-center sm:justify-between shadow-sm">
                 <div>
-                  <h2 className="text-2xl text-gray-900">Client Reviews</h2>
-                  <p className="text-gray-600">
+                  <h2 className="text-2xl font-bebas text-slate-900">Client Reviews Moderation</h2>
+                  <p className="text-xs text-slate-500">
                     Signed in as {session.user.email}
                   </p>
                 </div>
@@ -327,7 +327,7 @@ export function ReviewAdmin() {
                   type="button"
                   onClick={loadAdminReviews}
                   disabled={isLoadingReviews}
-                  className="inline-flex items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 transition-colors hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   <RefreshCcw className="h-4 w-4" />
                   Refresh
@@ -335,13 +335,13 @@ export function ReviewAdmin() {
               </div>
 
               {adminError ? (
-                <div className="rounded-md border border-red-200 bg-red-50 p-4 text-red-700">
+                <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-xs text-red-700">
                   {adminError}
                 </div>
               ) : null}
 
               {isLoadingReviews ? (
-                <div className="rounded-lg border border-gray-200 bg-white p-6 text-gray-600">
+                <div className="rounded-2xl border border-slate-200 bg-white p-8 text-slate-600 shadow-sm">
                   Loading reviews...
                 </div>
               ) : isAdmin && reviews.length > 0 ? (
@@ -349,36 +349,35 @@ export function ReviewAdmin() {
                   {reviews.map((review) => (
                     <div
                       key={review.id}
-                      className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm"
+                      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
                     >
                       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                         <div>
                           <div className="mb-2 flex flex-wrap items-center gap-3">
-                            <h3 className="text-xl text-gray-900">
+                            <h3 className="text-xl font-bold text-slate-900">
                               {review.client_name}
                             </h3>
                             <Badge
                               variant={review.is_enabled ? "default" : "outline"}
                               className={
                                 review.is_enabled
-                                  ? "bg-emerald-600"
-                                  : "border-amber-300 text-amber-700"
+                                  ? "bg-emerald-600 text-white"
+                                  : "border-amber-400 text-amber-800 bg-amber-50"
                               }
                             >
                               {review.is_enabled ? "Published" : "Hidden"}
                             </Badge>
                           </div>
-                          <p className="text-gray-600">
-                            {review.client_role || "Client"} -{" "}
-                            {review.service_type}
+                          <p className="text-xs text-slate-500 font-medium">
+                            {review.client_role || "Client"} &bull; {review.service_type}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs text-slate-400 mt-0.5">
                             Submitted {formatReviewDate(review.created_at)}
                           </p>
                         </div>
 
-                        <label className="flex items-center gap-3 text-gray-700">
-                          <span>Show on home page</span>
+                        <label className="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-700">
+                          <span>Show on Home Page</span>
                           <Switch
                             checked={review.is_enabled}
                             disabled={updatingReviewId === review.id}
@@ -391,20 +390,20 @@ export function ReviewAdmin() {
                         </label>
                       </div>
 
-                      <div className="mb-3 flex items-center gap-3">
+                      <div className="mb-3 flex items-center gap-2">
                         <ReviewStars rating={review.rating} />
-                        <span className="text-sm text-gray-500">
+                        <span className="text-xs font-bold text-slate-500">
                           {review.rating}/5
                         </span>
                       </div>
 
-                      <p className="leading-7 text-gray-700">{review.review}</p>
+                      <p className="leading-relaxed text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">{review.review}</p>
                     </div>
                   ))}
                 </div>
               ) : isAdmin ? (
-                <div className="rounded-lg border border-dashed border-gray-300 bg-white p-6 text-gray-600">
-                  No client reviews have been submitted yet.
+                <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center text-slate-500">
+                  No client reviews submitted yet.
                 </div>
               ) : null}
             </div>

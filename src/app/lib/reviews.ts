@@ -21,11 +21,21 @@ export type ClientReviewInput = {
 };
 
 export const reviewServiceTypes = [
+  "Extensions & Additions",
+  "Full Renovations & Refurbishments",
+  "Loft Conversions",
+  "Kitchen & Bathroom Fitting",
+  "Brickwork & Masonry",
+  "Carpentry & Joinery",
+  "Electrical & Plumbing",
+  "Plastering & Decorating",
+  "Roofing & Guttering",
+  "New Build & Groundworks",
+  "Driveways & Paving",
+  "Commercial Construction",
+  "Post-Construction Cleanup",
   "Residential Cleaning",
   "Commercial Cleaning",
-  "Deep Cleaning",
-  "Post-Construction Cleanup",
-  "Construction Services",
   "Property Maintenance",
 ] as const;
 
@@ -34,37 +44,81 @@ const reviewColumns =
 
 export const sampleClientReviews: ClientReview[] = [
   {
-    id: "sample-1",
-    client_name: "N. Perera",
-    client_role: "Homeowner",
+    id: "sample-apex-1",
+    client_name: "Charlotte Evans",
+    client_role: "Homeowner · Letchworth",
+    service_type: "Extensions & Additions",
+    rating: 5,
+    review:
+      "Apex completed our double-storey rear extension and new kitchen space. The build team was punctual, tidy, and transparent with every phase. Delivered on schedule with immaculate finishing.",
+    is_enabled: true,
+    created_at: "2026-02-14T10:00:00.000Z",
+  },
+  {
+    id: "sample-apex-2",
+    client_name: "Marcus Thornton",
+    client_role: "Property Landlord · Stevenage",
+    service_type: "Full Renovations & Refurbishments",
+    rating: 5,
+    review:
+      "Superb full-property renovation. Stripped back to bare walls, re-engineered the plumbing and electrics, and replastered throughout. Great communication from the project manager.",
+    is_enabled: true,
+    created_at: "2026-02-02T14:30:00.000Z",
+  },
+  {
+    id: "sample-apex-3",
+    client_name: "Hannah Phillips",
+    client_role: "Commercial Manager · Hitchin",
+    service_type: "Commercial Construction",
+    rating: 5,
+    review:
+      "Handled our office floor re-partitioning and retail showroom fit-out over a bank holiday weekend. Zero downtime for our staff, spotless handover, and fully certified documentation.",
+    is_enabled: true,
+    created_at: "2026-01-20T09:15:00.000Z",
+  },
+  {
+    id: "sample-apex-4",
+    client_name: "Oliver Davies",
+    client_role: "Homeowner · Baldock",
+    service_type: "Loft Conversions",
+    rating: 5,
+    review:
+      "Transformed our awkward attic into a bright master bedroom and en-suite shower room with dormer windows. The structural woodwork and insulation quality are first class.",
+    is_enabled: true,
+    created_at: "2026-01-11T16:00:00.000Z",
+  },
+  {
+    id: "sample-apex-5",
+    client_name: "Gareth Morgan",
+    client_role: "Resident · Welwyn",
+    service_type: "Driveways & Paving",
+    rating: 5,
+    review:
+      "Replaced our failing cracked concrete driveway with permeable charcoal block paving and reconstructed the brick boundary pier walls. Excellent craftsmanship and kerb appeal.",
+    is_enabled: true,
+    created_at: "2025-12-28T11:45:00.000Z",
+  },
+  {
+    id: "sample-apex-6",
+    client_name: "Sophie Bennett",
+    client_role: "Property Owner · St Albans",
+    service_type: "Kitchen & Bathroom Fitting",
+    rating: 5,
+    review:
+      "Complete rip-out and luxury installation of our family bathroom and bespoke kitchen. The tile alignment, silicone seals, and under-cabinet lighting are flawless.",
+    is_enabled: true,
+    created_at: "2025-12-14T13:20:00.000Z",
+  },
+  {
+    id: "sample-apex-7",
+    client_name: "Liam Foster",
+    client_role: "Developer Partner · Hertfordshire",
     service_type: "Post-Construction Cleanup",
     rating: 5,
     review:
-      "The team handled dust, debris, and final detailing after our renovation. The house was ready to move back into the same day.",
+      "Their handover team detailed 4 newly completed townhouses prior to estate agent photography. Fine plaster dust was completely removed, windows polished, and carpets spotless.",
     is_enabled: true,
-    created_at: "2026-01-15T08:00:00.000Z",
-  },
-  {
-    id: "sample-2",
-    client_name: "Metro Office Group",
-    client_role: "Facilities Manager",
-    service_type: "Commercial Cleaning",
-    rating: 5,
-    review:
-      "Reliable office cleaning with clear communication. They keep our common areas, washrooms, and meeting rooms consistently presentable.",
-    is_enabled: true,
-    created_at: "2026-01-09T08:00:00.000Z",
-  },
-  {
-    id: "sample-3",
-    client_name: "S. Fernando",
-    client_role: "Property Owner",
-    service_type: "Construction Services",
-    rating: 5,
-    review:
-      "Their construction crew completed repair and finishing work neatly, then the cleaning team left the property ready for handover.",
-    is_enabled: true,
-    created_at: "2025-12-18T08:00:00.000Z",
+    created_at: "2025-11-30T08:00:00.000Z",
   },
 ];
 
@@ -84,13 +138,23 @@ function requirePublicSupabase() {
   return publicSupabase;
 }
 
+/** Strip HTML tags from user input to prevent stored XSS. */
+function stripHtml(input: string): string {
+  return input.replace(/<[^>]*>/g, "");
+}
+
+/** Enforce a maximum length on user input strings. */
+function enforceMaxLength(input: string, max: number): string {
+  return input.length > max ? input.slice(0, max) : input;
+}
+
 function cleanInput(input: ClientReviewInput) {
   return {
-    client_name: input.client_name.trim(),
-    client_role: input.client_role.trim() || null,
-    service_type: input.service_type.trim(),
-    rating: input.rating,
-    review: input.review.trim(),
+    client_name: enforceMaxLength(stripHtml(input.client_name.trim()), 100),
+    client_role: enforceMaxLength(stripHtml(input.client_role.trim()), 100) || null,
+    service_type: enforceMaxLength(stripHtml(input.service_type.trim()), 100),
+    rating: Math.max(1, Math.min(5, Math.round(input.rating))),
+    review: enforceMaxLength(stripHtml(input.review.trim()), 2000),
     is_enabled: false,
   };
 }
