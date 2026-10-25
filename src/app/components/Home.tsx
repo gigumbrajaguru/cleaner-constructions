@@ -109,7 +109,7 @@ const galleryProjects = [
     id: 1,
     title: "Rear Extension & Open Plan Kitchen",
     category: "Extensions",
-    image: "https://images.unsplash.com/photo-1590725140246-20acddc1ec6d?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
     client: "The Henderson Residence · Letchworth",
     description:
       "Single-storey rear extension featuring powder-coated bi-fold doors, lantern roof light, structural steel installation, and seamless kitchen integration.",
@@ -154,7 +154,7 @@ const galleryProjects = [
     id: 6,
     title: "Block Paved Driveway & Hard Landscaping",
     category: "Driveways",
-    image: "https://images.unsplash.com/photo-1584463699042-6a6c429712a4?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
     client: "Kingsley Court · Welwyn",
     description:
       "Excavation, permeable sub-base preparation, charcoal border block paving, and integrated surface water drainage channels.",
@@ -265,7 +265,7 @@ export function Home() {
         {/* Subtle background overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d0fbb18615f8?w=1800&q=80"
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1800&q=80"
             alt="High-end building craftsmanship"
             className="w-full h-full object-cover opacity-15"
           />
