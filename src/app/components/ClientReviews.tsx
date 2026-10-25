@@ -1,5 +1,5 @@
-import { useEffect, useState, type FormEvent } from "react";
-import { ChevronLeft, ChevronRight, Send, Star } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { ChevronLeft, ChevronRight, Send, Star, MapPin, Quote } from "lucide-react";
 import {
   fetchPublishedReviews,
   reviewServiceTypes,
@@ -40,12 +40,12 @@ function RatingStars({
               key={star}
               type="button"
               onClick={() => onChange(star)}
-              className="rounded-md p-1 text-amber-500 transition-colors hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="rounded p-1 text-amber-500 transition-colors hover:bg-amber-50 focus:outline-none focus:ring-2 focus:ring-amber-500"
               aria-label={`Set ${star} star rating`}
             >
               <Star
                 className={`h-5 w-5 ${
-                  filled ? "fill-amber-400 text-amber-400" : "text-gray-300"
+                  filled ? "fill-[#C8922A] text-[#C8922A]" : "text-gray-300"
                 }`}
               />
             </button>
@@ -56,13 +56,21 @@ function RatingStars({
           <Star
             key={star}
             className={`h-5 w-5 ${
-              filled ? "fill-amber-400 text-amber-400" : "text-gray-300"
+              filled ? "fill-[#C8922A] text-[#C8922A]" : "text-gray-300"
             }`}
           />
         );
       })}
     </div>
   );
+}
+
+function getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase();
 }
 
 export function ClientReviews() {
@@ -75,6 +83,7 @@ export function ClientReviews() {
     status: "idle",
     message: "",
   });
+  const lastSubmitTime = useRef(0);
 
   useEffect(() => {
     let isMounted = true;
@@ -83,16 +92,12 @@ export function ClientReviews() {
       try {
         const publishedReviews = await fetchPublishedReviews();
 
-        if (!isMounted) {
-          return;
-        }
+        if (!isMounted) return;
 
         setReviews(publishedReviews);
         setReviewError("");
       } catch (error) {
-        if (!isMounted) {
-          return;
-        }
+        if (!isMounted) return;
 
         setReviews([]);
         setReviewError(
@@ -125,7 +130,7 @@ export function ClientReviews() {
 
     const timer = window.setInterval(() => {
       setActiveIndex((index) => (index + 1) % reviews.length);
-    }, 6500);
+    }, 7000);
 
     return () => window.clearInterval(timer);
   }, [reviews.length]);
@@ -134,18 +139,12 @@ export function ClientReviews() {
   const hasMultipleReviews = reviews.length > 1;
 
   const showPreviousReview = () => {
-    if (!hasMultipleReviews) {
-      return;
-    }
-
+    if (!hasMultipleReviews) return;
     setActiveIndex((index) => (index - 1 + reviews.length) % reviews.length);
   };
 
   const showNextReview = () => {
-    if (!hasMultipleReviews) {
-      return;
-    }
-
+    if (!hasMultipleReviews) return;
     setActiveIndex((index) => (index + 1) % reviews.length);
   };
 
@@ -166,6 +165,16 @@ export function ClientReviews() {
       setSubmitState({
         status: "error",
         message: "Review submissions are temporarily unavailable.",
+      });
+      return;
+    }
+
+    // Rate limiting — prevent rapid repeated submissions
+    const now = Date.now();
+    if (now - lastSubmitTime.current < 15_000) {
+      setSubmitState({
+        status: "error",
+        message: "Please wait a moment before submitting another review.",
       });
       return;
     }
@@ -193,10 +202,11 @@ export function ClientReviews() {
 
     try {
       await submitClientReview(form);
+      lastSubmitTime.current = Date.now();
       setForm(emptyForm);
       setSubmitState({
         status: "success",
-        message: "Thank you. Your review was sent for approval.",
+        message: "Thank you! Your review has been submitted for admin moderation.",
       });
     } catch (error) {
       setSubmitState({
@@ -210,120 +220,143 @@ export function ClientReviews() {
   };
 
   return (
-    <section id="reviews" className="bg-white py-16">
+    <section id="reviews" className="bg-[#F7F4EF] py-20 border-t border-[#E8E2D9]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-3xl">
-          <p className="mb-3 text-sm font-medium uppercase tracking-wide text-amber-600">
-            Client reviews
-          </p>
-          <h2 className="mb-4 text-3xl text-gray-900">
-            Trusted for cleaning, construction, and handover-ready spaces
+        <div className="mb-12 max-w-3xl">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#C8922A]">
+            Customer Reviews
+          </span>
+          <h2 className="font-bebas text-4xl sm:text-5xl tracking-wide text-[#1C2B3A] mt-2 mb-3">
+            What Our Clients Say
           </h2>
-          <p className="text-lg text-gray-600">
-            Feedback from homeowners, property managers, contractors, and
-            commercial teams who trust us with finished spaces.
+          <div className="w-16 h-1 bg-[#C8922A] mb-4"></div>
+          <p className="text-slate-600 text-base sm:text-lg">
+            Don't just take our word for it. Here's what homeowners and businesses across
+            Hertfordshire, Bedfordshire, and Cambridgeshire think of DS2 Building Solutions.
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(340px,0.85fr)]">
-          <div className="rounded-lg border border-gray-200 bg-slate-50 p-6 shadow-sm sm:p-8">
-            <div className="mb-6 flex items-center justify-between gap-4">
-              <div>
-                <h3 className="text-2xl text-gray-900">What clients say</h3>
-                <p className="text-gray-600">
-                  Published reviews selected by the admin team.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={showPreviousReview}
-                  disabled={!hasMultipleReviews}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
-                  aria-label="Previous client review"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  type="button"
-                  onClick={showNextReview}
-                  disabled={!hasMultipleReviews}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
-                  aria-label="Next client review"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-
-            {isLoading ? (
-              <div className="min-h-[240px] rounded-lg border border-dashed border-gray-300 bg-white p-6 text-gray-600">
-                Loading reviews...
-              </div>
-            ) : activeReview ? (
-              <div className="min-h-[240px] rounded-lg bg-white p-6 shadow-sm">
-                <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-                  <RatingStars rating={activeReview.rating} />
-                  <span className="rounded-md bg-emerald-50 px-3 py-1 text-sm text-emerald-700">
-                    {activeReview.service_type}
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(340px,0.8fr)] items-start">
+          {/* Review Slider Box */}
+          <div className="rounded-xl border border-[#E8E2D9] bg-white p-7 sm:p-9 shadow-md flex flex-col justify-between">
+            <div>
+              <div className="mb-6 flex items-center justify-between gap-4 pb-4 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <Quote className="w-5 h-5 text-[#C8922A]" />
+                  <span className="font-bebas text-xl text-[#1C2B3A] tracking-wider uppercase">
+                    Verified Customer Feedback
                   </span>
                 </div>
 
-                <blockquote className="mb-6 text-xl leading-8 text-gray-800">
-                  "{activeReview.review}"
-                </blockquote>
-
-                <div>
-                  <p className="text-lg text-gray-900">
-                    {activeReview.client_name}
-                  </p>
-                  {activeReview.client_role ? (
-                    <p className="text-gray-600">{activeReview.client_role}</p>
-                  ) : null}
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={showPreviousReview}
+                    disabled={!hasMultipleReviews}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    aria-label="Previous client review"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={showNextReview}
+                    disabled={!hasMultipleReviews}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded border border-gray-300 bg-white text-gray-700 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    aria-label="Next client review"
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
                 </div>
               </div>
-            ) : (
-              <div className="min-h-[240px] rounded-lg border border-dashed border-gray-300 bg-white p-6 text-gray-600">
-                {reviewError || "No client reviews are published yet."}
-              </div>
-            )}
+
+              {isLoading ? (
+                <div className="min-h-[220px] rounded-lg border border-dashed border-gray-300 bg-slate-50 p-8 text-gray-500 text-center flex items-center justify-center">
+                  Loading verified reviews...
+                </div>
+              ) : activeReview ? (
+                <div className="min-h-[220px]">
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                    <RatingStars rating={activeReview.rating} />
+                    <span className="rounded bg-[#1C2B3A] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#C8922A]">
+                      {activeReview.service_type}
+                    </span>
+                  </div>
+
+                  <blockquote className="mb-6 text-lg sm:text-xl font-normal leading-relaxed text-slate-800 italic">
+                    "{activeReview.review}"
+                  </blockquote>
+
+                  <div className="flex items-center gap-3.5 pt-4 border-t border-gray-100">
+                    <div className="w-11 h-11 rounded-full bg-[#1C2B3A] text-[#C8922A] font-bebas text-lg flex items-center justify-center font-bold tracking-wider shrink-0 shadow-sm">
+                      {getInitials(activeReview.client_name)}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base text-[#1C2B3A]">
+                        {activeReview.client_name}
+                      </h3>
+                      {activeReview.client_role ? (
+                        <p className="text-xs text-slate-500 font-medium flex items-center gap-1">
+                          <MapPin className="w-3.5 h-3.5 text-[#C8922A]" />
+                          {activeReview.client_role}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="min-h-[220px] rounded-lg border border-dashed border-gray-300 bg-slate-50 p-6 text-gray-600">
+                  {reviewError || "No client reviews are published yet."}
+                </div>
+              )}
+            </div>
 
             {reviews.length > 0 ? (
-              <div className="mt-6 flex flex-wrap gap-2" aria-label="Review slides">
-                {reviews.map((review, index) => (
-                  <button
-                    key={review.id}
-                    type="button"
-                    onClick={() => setActiveIndex(index)}
-                    className={`h-2.5 rounded-full transition-all ${
-                      index === activeIndex
-                        ? "w-8 bg-blue-600"
-                        : "w-2.5 bg-gray-300 hover:bg-gray-400"
-                    }`}
-                    aria-label={`Show review ${index + 1}`}
-                    aria-current={index === activeIndex}
-                  />
-                ))}
+              <div className="mt-8 flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-gray-100">
+                <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
+                  Review {activeIndex + 1} of {reviews.length}
+                </span>
+                <div className="flex flex-wrap gap-1.5" aria-label="Review slides">
+                  {reviews.map((review, index) => (
+                    <button
+                      key={review.id}
+                      type="button"
+                      onClick={() => setActiveIndex(index)}
+                      className={`h-2 rounded-full transition-all ${
+                        index === activeIndex
+                          ? "w-7 bg-[#C8922A]"
+                          : "w-2 bg-gray-300 hover:bg-gray-400"
+                      }`}
+                      aria-label={`Show review ${index + 1}`}
+                      aria-current={index === activeIndex}
+                    />
+                  ))}
+                </div>
               </div>
             ) : null}
           </div>
 
+          {/* Submit Review Card */}
           <div
             id="submit-review"
-            className="scroll-mt-32 rounded-lg border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
+            className="scroll-mt-32 rounded-xl border border-[#E8E2D9] bg-white p-7 sm:p-9 shadow-md"
           >
             <div className="mb-6">
-              <h3 className="text-2xl text-gray-900">Submit a review</h3>
-              <p className="text-gray-600">
-                New reviews appear after admin approval.
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#C8922A]">
+                Share Your Experience
+              </span>
+              <h3 className="font-bebas text-3xl text-[#1C2B3A] mt-1 mb-1">
+                Leave a Client Review
+              </h3>
+              <p className="text-slate-500 text-xs">
+                We value your feedback. All reviews are checked by our team before publishing.
               </p>
             </div>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="review-client-name" className="mb-2 block text-gray-700">
-                  Name *
+                <label htmlFor="review-client-name" className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Your Name *
                 </label>
                 <input
                   id="review-client-name"
@@ -332,33 +365,35 @@ export function ClientReviews() {
                   onChange={(event) => updateForm("client_name", event.target.value)}
                   minLength={2}
                   required
-                  className="w-full rounded-md border-2 border-gray-300 px-4 py-2 focus:border-blue-600 focus:outline-none"
+                  placeholder="e.g. David M."
+                  className="w-full rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="review-client-role" className="mb-2 block text-gray-700">
-                  Company or project
+                <label htmlFor="review-client-role" className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Town / Location *
                 </label>
                 <input
                   id="review-client-role"
                   type="text"
                   value={form.client_role}
                   onChange={(event) => updateForm("client_role", event.target.value)}
-                  className="w-full rounded-md border-2 border-gray-300 px-4 py-2 focus:border-blue-600 focus:outline-none"
+                  placeholder="e.g. Letchworth Garden City"
+                  className="w-full rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="review-service-type" className="mb-2 block text-gray-700">
-                  Service *
+                <label htmlFor="review-service-type" className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Service Completed *
                 </label>
                 <select
                   id="review-service-type"
                   value={form.service_type}
                   onChange={(event) => updateForm("service_type", event.target.value)}
                   required
-                  className="w-full rounded-md border-2 border-gray-300 bg-white px-4 py-2 focus:border-blue-600 focus:outline-none"
+                  className="w-full rounded border-2 border-gray-200 bg-white px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
                 >
                   {reviewServiceTypes.map((serviceType) => (
                     <option key={serviceType} value={serviceType}>
@@ -369,7 +404,9 @@ export function ClientReviews() {
               </div>
 
               <div>
-                <span className="mb-2 block text-gray-700">Rating *</span>
+                <span className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Rating *
+                </span>
                 <RatingStars
                   rating={form.rating}
                   onChange={(rating) => updateForm("rating", rating)}
@@ -377,25 +414,26 @@ export function ClientReviews() {
               </div>
 
               <div>
-                <label htmlFor="review-message" className="mb-2 block text-gray-700">
-                  Review *
+                <label htmlFor="review-message" className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-700">
+                  Your Review *
                 </label>
                 <textarea
                   id="review-message"
                   value={form.review}
                   onChange={(event) => updateForm("review", event.target.value)}
-                  rows={5}
+                  rows={4}
                   minLength={10}
                   required
-                  className="w-full resize-none rounded-md border-2 border-gray-300 px-4 py-2 focus:border-blue-600 focus:outline-none"
+                  placeholder="Tell others about the workmanship, punctuality, and final quality..."
+                  className="w-full resize-none rounded border-2 border-gray-200 px-3.5 py-2.5 text-sm focus:border-[#C8922A] focus:outline-none"
                 />
               </div>
 
               {submitState.message ? (
                 <div
-                  className={`rounded-md border p-3 text-sm ${
+                  className={`rounded border p-3 text-xs ${
                     submitState.status === "success"
-                      ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                       : "border-red-200 bg-red-50 text-red-700"
                   }`}
                 >
@@ -404,20 +442,20 @@ export function ClientReviews() {
               ) : null}
 
               {!isSupabaseConfigured ? (
-                <div className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                  Review submissions are temporarily unavailable.
+                <div className="rounded border border-amber-200 bg-amber-50 p-2.5 text-xs text-amber-800">
+                  Demo mode: Reviews are stored securely when Supabase is connected.
                 </div>
               ) : null}
 
               <button
                 type="submit"
                 disabled={submitState.status === "submitting" || !isSupabaseConfigured}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-blue-600 px-5 py-3 text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded bg-[#C8922A] hover:bg-[#d8a033] px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#1C2B3A] transition-colors disabled:cursor-not-allowed disabled:opacity-60 shadow-md"
               >
-                <Send className="h-5 w-5" />
+                <Send className="h-4 w-4" />
                 {submitState.status === "submitting"
-                  ? "Sending Review..."
-                  : "Submit Review"}
+                  ? "Submitting..."
+                  : "Submit My Review"}
               </button>
             </form>
           </div>
